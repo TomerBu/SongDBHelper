@@ -2,10 +2,11 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activities.SongDBActivity">
+    tools:context=".controllers.SongRecyclerActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -49,19 +50,17 @@
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end" />
 
+
+
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        app:layout_anchorGravity="bottom|end"
-        android:layout_marginBottom="15dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp"
+        android:onClick="gotoDetails"
+        android:src="@drawable/ic_add_white_24dp"
         app:layout_anchor="@+id/songRecycler"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-    />
+        app:layout_anchorGravity="bottom|end"
+        android:layout_margin="20dp"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

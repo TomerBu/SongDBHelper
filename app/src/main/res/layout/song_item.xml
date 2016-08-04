@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/songCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
-    android:focusable="true"
+    android:layout_margin="10dp"
     android:background="?android:attr/selectableItemBackground"
-    android:id="@+id/songCard"
-    android:layout_margin="10dp">
+    android:clickable="true"
+    android:focusable="true">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
         android:id="@+id/layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/imageView"
@@ -64,13 +67,24 @@
             android:id="@+id/tvDuration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/imageView"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
             android:fontFamily="casual"
             android:text="4:24"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_above="@+id/ivDelete"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="-5dp"
+
+            android:src="@drawable/ic_delete_light_blue_700_24dp" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

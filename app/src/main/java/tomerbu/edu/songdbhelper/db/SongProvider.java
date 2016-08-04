@@ -57,9 +57,10 @@ public class SongProvider extends ContentProvider {
             case SONGS:
                 long insertedID = helper.getWritableDatabase().insert("Songs", null, values);
                 //getContext().getContentResolver().notifyChange(, null);
-                Uri build = CONTENT_URI.buildUpon().appendEncodedPath("" + insertedID).build();
-                return build;
-             default:
+                Uri insertedUri = CONTENT_URI.buildUpon().appendEncodedPath("" + insertedID).build();
+                notifyChange(insertedUri);
+                return insertedUri;
+            default:
                 throw new UnsupportedOperationException("No Such uri");
         }
     }
@@ -67,14 +68,36 @@ public class SongProvider extends ContentProvider {
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         // Implement this to handle requests to delete one or more rows.
-        throw new UnsupportedOperationException("Not yet implemented");
+        switch (matcher.match(uri)) {
+            case SONGS:
+                break;
+            case SONGS_ID:
+                selection = getModifiedSelectionWithID(uri, selection);
+                break;
+            default:
+                throw new UnsupportedOperationException("No Such uri");
+        }
+        int deleteCount = helper.getWritableDatabase().delete("Songs", selection, selectionArgs);
+        notifyChange(uri);
+        return deleteCount;
     }
 
     @Override
     public int update(Uri uri, ContentValues values, String selection,
                       String[] selectionArgs) {
-        // TODO: Implement this to handle requests to update one or more rows.
-        throw new UnsupportedOperationException("Not yet implemented");
+        switch (matcher.match(uri)) {
+            case SONGS:
+                break;
+            case SONGS_ID:
+                selection = getModifiedSelectionWithID(uri, selection);
+                break;
+            default:
+                throw new UnsupportedOperationException("No Such uri");
+        }
+
+        int updatedCount = helper.getWritableDatabase().update("Songs", values, selection, selectionArgs);
+        notifyChange(uri);
+        return updatedCount;
     }
 
     /**
@@ -87,5 +110,12 @@ public class SongProvider extends ContentProvider {
         else
             selection = "_ID = " + uri.getLastPathSegment();
         return selection;
+    }
+
+    private void notifyChange(Uri uri) {
+        getContext();
+        if (getContext() != null) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
     }
 }

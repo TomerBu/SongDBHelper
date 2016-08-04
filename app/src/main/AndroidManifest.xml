@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="tomerbu.edu.songdbhelper"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="tomerbu.edu.songdbhelper">
 
     <application
         android:allowBackup="true"
@@ -9,13 +9,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.SongDBActivity"
+            android:name=".controllers.SongRecyclerActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
@@ -23,8 +23,11 @@
             android:name=".db.SongProvider"
             android:authorities="tomerbu.edu.songdbhelper"
             android:enabled="true"
-            android:exported="true">
-        </provider>
+            android:exported="true"></provider>
+
+        <activity
+            android:name=".controllers.SongDetailsActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>
