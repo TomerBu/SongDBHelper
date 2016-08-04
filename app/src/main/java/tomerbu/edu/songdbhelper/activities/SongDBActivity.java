@@ -1,4 +1,4 @@
-package tomerbu.edu.songdbhelper;
+package tomerbu.edu.songdbhelper.activities;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import tomerbu.edu.songdbhelper.R;
 import tomerbu.edu.songdbhelper.adapters.SongAdapter;
 import tomerbu.edu.songdbhelper.db.SongContract;
 import tomerbu.edu.songdbhelper.db.SongDAO;

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="tomerbu.edu.songdbhelper.SongDBActivity"
+    tools:context=".activities.SongDBActivity"
     tools:showIn="@layout/activity_song_db">
 
     <android.support.v7.widget.RecyclerView
